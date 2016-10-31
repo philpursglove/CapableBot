@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using System.Web.Mvc;
 
 namespace CapableBot
 {
@@ -44,7 +45,7 @@ namespace CapableBot
                 if (activity.Text.ToLower().Contains("image"))
                 {
                     Activity imageReply = activity.CreateReply();
-                    imageReply.Text = "![Robot]()";
+                    imageReply.Text = "![Robot](" + Url.Content() + ")";
 
                     await connector.Conversations.ReplyToActivityAsync(imageReply);
                 }
